@@ -1,12 +1,12 @@
-// src/components/PrivateRoute.tsx
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 interface PrivateRouteProps {
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 export default function PrivateRoute({ children }: PrivateRouteProps) {
   const token = localStorage.getItem('token');
-  if (!token) return <Navigate to="/login" replace />;
+  if (!token) return <Navigate to='/login' replace />;
   return children;
 }
