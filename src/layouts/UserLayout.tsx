@@ -157,7 +157,7 @@ export default function UserLayout() {
                   )}
                 </DropdownMenuTrigger>
 
-                <DropdownMenuContent className='w-screen left-0 px-4 mt-2 !translate-x-0 bg-white border shadow-md'>
+                <DropdownMenuContent className='w-screen left-0 px-4 mt-2 translate-x-0 bg-white border shadow-md'>
                   <DropdownMenuItem>
                     <div className='flex gap-2 justify-between w-full'>
                       <Link

@@ -7,12 +7,19 @@ const instance = axios.create({
 instance.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
 
-  // pastikan config.headers ada
-  if (token) {
-    config.headers = {
-      ...config.headers,
-      Authorization: `Bearer ${token}`,
-    };
+  // Pastikan headers ada
+  config.headers = config.headers || {};
+
+  // Axios v1+ (headers = AxiosHeaders) → gunakan .set()
+  if (typeof config.headers.set === 'function') {
+    if (token) {
+      config.headers.set('Authorization', `Bearer ${token}`);
+    }
+  } else {
+    // Fallback untuk object biasa
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
   }
 
   return config;
